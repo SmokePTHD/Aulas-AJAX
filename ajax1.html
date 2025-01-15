@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Ajax</title>
+  </head>
+  <body>
+    <h2>O XMLHttpRequest Object</h2>
+    <div id="demo">
+      <p>Mudar texto com AJAX.</p>
+      <button type="button" onclick="loadDoc()">Mudar</button>
+    </div>
+
+    <script>
+      // loadDoc função para carregar documento
+      function loadDoc() {
+        // Criar solicitação ao servidor (request)
+        const xhttp = new XMLHttpRequest();
+
+        // Defenir uma função callback
+        xhttp.onload = function () {
+          document.getElementById("demo").innerHTML = this.responseText;
+        };
+
+        // Abrir documento
+        xhttp.open("GET", "texto.txt");
+
+        // Enviar documento para o navegador
+        xhttp.send();
+      }
+    </script>
+  </body>
+</html>

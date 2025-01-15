@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AJAX2</title>
+
+    <style>
+      #demo #demo1 {
+        width: 20em;
+        background-color: lightgray;
+        padding: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo">
+      <h2>Título de uma notícia</h2>
+      <p>Lead da notícia.Lead da notícia.Lead da notícia.Lead da notícia.</p>
+      <button type="button" onclick="loadDoc()">Ler mais</button>
+    </div>
+    <div id="demo1">
+      <script>
+        function loadDoc() {
+          const xhttp = new XMLHttpRequest();
+
+          xhttp.onload = function () {
+            document.getElementById("demo1").innerHTML = this.response;
+          };
+
+          xhttp.open("GET", "texto1.txt");
+          xhttp.send();
+        }
+      </script>
+    </div>
+  </body>
+</html>
