@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GetHint</title>
+</head>
+<body>
+    <h2>Objeto XMLHttpRequest</h2>
+    <h3>Comece a escrever um nome no campo de texto:</h3>
+    <p>Sugestões: <span id="txtHint"></span></p>
+    <p>Nome: <input type="text" id="txt1" onkeyup="showHunt(this.value)"></p>
+
+    <script>
+        function showHunt(str) {
+            if (str.length == 0) { // se o campo de input está vazio
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } 
+            const xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function() {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            };
+            xmlhttp.open("GET", "gethint.php?q=" + str, true); // note que aqui a introdução do parâmetro q + str, que é o conteudo do campo de texto
+            xmlhttp.send();
+        }
+    </script>
+</body>
+</html>
